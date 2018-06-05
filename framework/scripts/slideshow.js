@@ -251,7 +251,8 @@ var _ = window.SlideShow = function(slide) {
 
 	document.addEventListener('keyup', this, false);
 	document.addEventListener('keydown', this, false);
-	
+	document.addEventListener('click', this, false);
+
 	$$('link[rel~="csss-import"]').forEach(function (link) {
 		var url = link.href;
 		var id = link.id;
@@ -384,6 +385,11 @@ _.prototype = {
 							this.next(evt.ctrlKey || evt.shiftKey);
 							break;
 					}
+				}
+				break;
+			case 'click':
+				if(evt.target === body || evt.target === body.parentNode || evt.metaKey && evt.altKey) {
+					this.next(evt.ctrlKey || evt.shiftKey);
 				}
 				break;
 			case 'load':
