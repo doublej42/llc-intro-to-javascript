@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hello JavaScript</title>
+</head>
+<body>
+    <style>
+    .Letter
+    {
+        width: 20px;
+        height: 20px;
+        border: 1px solid black;
+    }
+    </style>
+	
+    
+    <div class="Letter">H</div>
+    <div class="Letter">A</div>
+    <div class="Letter">N</div>
+    <div class="Letter">G</div>
+    <div id="notFound"></div>
+	<script>
+		//Add your JavaScript here
+        window.onkeydown = function(){
+            //Get the key
+            var notFound = document.getElementById("notFound");
+            notFound.innerHTML  = "hi";
+        };
+
+	</script>
+</body>
+</html>
