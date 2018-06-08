@@ -1,33 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title>Hello JavaScript</title>
+    <meta charset="UTF-8">
+    <title>Hello JavaScript</title>
 </head>
+
 <body>
     <style>
-    .Letter
-    {
-        width: 20px;
-        height: 20px;
-        border: 1px solid black;
-    }
+        .Letter {
+            width: 30px;
+            height: 30px;
+            border: 1px solid black;
+            display: inline-block;
+            vertical-align: middle;
+            
+        }
     </style>
-	
-    
-    <div class="Letter">H</div>
-    <div class="Letter">A</div>
-    <div class="Letter">N</div>
-    <div class="Letter">G</div>
+
+    <div id="correctLetters">
+        <div class="Letter">H</div>
+        <div class="Letter">A</div>
+        <div class="Letter">N</div>
+        <div class="Letter">G</div>
+    </div>
     <div id="notFound"></div>
-	<script>
-		//Add your JavaScript here
-        window.onkeydown = function(){
+    <script>
+        var word = "hang";
+        var totalMatched = 0;
+        var remainingFails = 5;
+
+        function checkLetter(key)
+        {
+            var matched = false;
+            for (i = 0; i < word.length; i++) {
+                console.log(word[i]);
+                if (word[i] == key)
+                {
+                    totalMatched++;
+                    console.log(totalMatched);
+                    matched = true;
+                } 
+            }
+            if (!matched)
+            {
+                remainingFails--;
+            }
+            if (remainingFails == 0)
+            {
+                alert('you looooooooooose');
+            }
+            if (totalMatched == word.length)
+            {
+                alert('your win');
+            }
+            return matched;
+        }
+
+        //Add your JavaScript here
+        window.onkeydown = function (event) {
             //Get the key
             var notFound = document.getElementById("notFound");
-            notFound.innerHTML  = "hi";
+            console.log(event);
+            if (event.keyCode >= 65 && event.keyCode <= 90)
+            {
+                notFound.innerHTML = notFound.innerHTML +" "+ event.key;
+                checkLetter(event.key);    
+            }
+            
+            
         };
 
-	</script>
+    </script>
 </body>
+
 </html>
